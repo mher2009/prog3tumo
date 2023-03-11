@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game-Of-Life </title>
+    <style>
+        canvas{
+            margin-left: 570px;
+            margin-top: 220 px;
+        }
+        body{
+            background-color: rgb(77, 44, 44)        }
+        h1{
+            text-align: center;
+            text-shadow: sienna 4px 2px;
+        }
+        div{
+            margin: auto;
+            color:black;
+
+        }
+        .green{
+            color: green;
+        }
+
+        .yellow{
+            color: yellow;
+        }
+
+        .red{
+            color: red;
+        }
+
+        .lime{
+            color: lime;
+        }
+
+        .orange{
+            color: orange;
+        }
+
+        .purpure{
+            color: purple;
+        }
+        
+        .blue{
+            color: blue;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Game-Of-Life</h1>
+    <div>
+        <h2>W, A, S, D - Առաջ, ձախ, աջ, հետ       Q - Հարվածել   E - ուտել   G - վերցնել   H - բուժել</h2>
+        <h2 class="green">Կանաչ - խոտ, բազմանում է ամեն 20 տակտ մոտակա ութ վանդակներում, 30 տոկոս հավանականութըամբ ստանում է ձնողի գենեռը</h2>
+        <h2 class="yellow"> Դեղին - խոտակեր, բազմանում է ամեն 40 տակտ, ուտւմ է խոտին մոտակա 8 վանդակներում որ ստանա էնեռգիա, ամեն քայլին ձախսում է էներգիան, էներգիան վեռջանալու դեպքում մահանում է, սկզբում ունի 40 էներգիա, 30 տոկոս հավանականութըամբ ստանում է ձնողի գենեռը</h2>
+        <h2 class="red">  Կարմիր - ռադիացիա, վարաքում է խոտերին և խոտակերերին ամեն 5 տակտ, դրա հաշվին ստանում էներգիա, հարվաձում է խաղացողին, էնեռգիան պրձնելու դեպքում մահանում է, սկզբւմ ունի 8 էնեռգիա</h2>
+        <h2 class="lime"> Բաց Կանաչ - մուտացվաձ խոտ, ի տարբեռւթյուն խոտի տեսնում է մոտակա 8 վանդակները ըստ անկյունի և բազմանում ամեն է տակտ</h2>
+        <h2 class="orange"> Գազարագույն - մուտացվաձ խոտակեր, ի տարբեռւթյուն խոտակերի, նրա էնեռգիան անկանոն փոփոխվում է</h2>
+        <h2 class="purpure"> Մանուշակագույն - վակցինա, խաղացողը կարող է այն վերցնել, որ բուժի մուտացվաձ խոտին</h2>
+        <h2 class="blue">Կապույտ - խաղացող, կարող է սպանել ռադիացիաներին, էնեռգիա ստանալու համար ուտում է խոտակերերին, բուժելու հաշվին ստանում է ավելի շատ էնեռգիա</h2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+    <script src="class.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
