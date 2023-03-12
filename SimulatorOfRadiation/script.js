@@ -73,7 +73,7 @@ function matrixGenerator(matrixSize, grassCount, grEatCount, radCount, healingCo
 }
 
 
-let matrix = matrixGenerator(40,30,10,80,20);
+let matrix = matrixGenerator(40,30,12,80,20);
 var side = 25;
 
 
