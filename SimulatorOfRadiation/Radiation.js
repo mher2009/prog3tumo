@@ -1,20 +1,7 @@
 class Radiation extends LivingCreature{
     constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
-        this.multiply = 0;
+        super(x, y)
         this.energy = 8
-
     }
     chooseCell(char, char1) {
         var found = [];

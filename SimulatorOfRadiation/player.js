@@ -12,7 +12,7 @@ var player = {
         [this.x, this.y + 1],
         [this.x + 1, this.y + 1]
     ],
-    chooseMyDirec: function(){
+    chooseMyDirec (){
         this.directions = [
             [this.x - 1, this.y - 1],
             [this.x, this.y - 1],
@@ -24,7 +24,7 @@ var player = {
             [this.x + 1, this.y + 1]
         ];
     },
-    chooseMe: function () {
+    chooseMe () {
         for (var i = 0; i < matrix.length; i++) {
             for (var j = 0; j < matrix[0].length; j++) {
                 if (matrix[i][j] == 4) {
@@ -50,7 +50,7 @@ var player = {
         return found;
     },
 
-    up: function () {
+    up () {
         this.chooseMe()
         if (this.y - 1 >= 0 && this.y - 1 < matrix.length) {
             let newX = this.x;
@@ -62,7 +62,7 @@ var player = {
             }
         }
     },
-    down: function () {
+    down () {
         this.chooseMe()
         if (this.y + 1 >= 0 && this.y + 1 < matrix.length) {
             let newX = this.x;
@@ -74,7 +74,7 @@ var player = {
             }
         }
     },
-    left: function () {
+    left () {
         this.chooseMe()
         if (this.x - 1 >= 0 && this.x - 1 < matrix[0].length) {
             let newX = this.x - 1;
@@ -86,7 +86,7 @@ var player = {
             }
         }
     },
-    rigth: function () {
+    rigth () {
         this.chooseMe()
         if (this.x + 1 >= 0 && this.x + 1 < matrix[0].length) {
             let newX = this.x + 1;
@@ -98,7 +98,7 @@ var player = {
             }
         }
     },
-    eat: function(){
+    eat (){
         var emptyCells = this.chooseCell(2, 2)
         var newCell = random(emptyCells)
         if(newCell){
@@ -118,7 +118,7 @@ var player = {
 
         
     },
-    hit: function () {
+    hit () {
         this.multiply++;
         var emptyCells = this.chooseCell(3, 3)
         var newCell = random(emptyCells)
@@ -139,7 +139,7 @@ var player = {
 
         }       
     },
-    get: function(){
+    get (){
         var emptyCells = this.chooseCell(5, 5);
         var newCell = random(emptyCells);
         if(newCell){
@@ -150,7 +150,7 @@ var player = {
             this.healing++
         }
     },
-    heal: function(){
+    heal (){
         var emptyCells = this.chooseCell(1, 2)
         var newCell = random(emptyCells);
         if(newCell){
@@ -170,7 +170,7 @@ var player = {
             }
         }
     },
-    die: function () {
+    die () {
         matrix[this.y][this.x] = 0;
         this.x = undefined;
         this.y = undefined;
