@@ -1,4 +1,4 @@
-class Grass {
+class Grass extends LivingCreature {
     constructor(x, y, mutated) {
         this.x = x;
         this.y = y;
