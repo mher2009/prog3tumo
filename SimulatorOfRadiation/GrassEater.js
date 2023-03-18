@@ -1,4 +1,6 @@
-class GrassEater extends LivingCreature {
+let LivingCreature = require("./LivingCreature")
+
+module.exports = class GrassEater extends LivingCreature {
     constructor(x, y, mutated) {
         super(x, y)
         this.energy = 40;

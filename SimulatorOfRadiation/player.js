@@ -1,4 +1,4 @@
-var player = {
+module.exports = player = {
     healing: 3,
     energy: 7,
     multiply: 0,

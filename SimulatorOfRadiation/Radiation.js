@@ -1,4 +1,6 @@
-class Radiation extends LivingCreature{
+let LivingCreature = require("./LivingCreature")
+
+module.exports = class Radiation extends LivingCreature{
     constructor(x, y) {
         super(x, y)
         this.energy = 8
