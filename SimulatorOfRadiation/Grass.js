@@ -27,7 +27,7 @@ module.exports = class Grass extends LivingCreature {
 
     mul() {
         var gen = false
-        var rand = random(4)
+        var rand = Math.floor(Math.random() * 4)
         if (rand == 4) {
             gen = this.mutated
         }
@@ -38,7 +38,7 @@ module.exports = class Grass extends LivingCreature {
         }
         this.multiply++
         var emptyCell = this.chooseCell(0);
-        var newCell = random(emptyCell);
+        var newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)];
         if (newCell && this.multiply >= tact) {
 
             var newX = newCell[0];
@@ -55,3 +55,4 @@ module.exports = class Grass extends LivingCreature {
     }
 
 }
+

@@ -70,7 +70,7 @@ module.exports = class GrassEater extends LivingCreature {
 
     eat() {
         var emptyCell = this.chooseCell(1)
-        var newCell = random(emptyCell)
+        var newCell = emptyCell(Math.floor(Math.random() * emptyCell.length))
 
         if (newCell) {
             this.energy++
@@ -93,7 +93,7 @@ module.exports = class GrassEater extends LivingCreature {
         }
     }
     energ() {
-        var rand = random(1);
+        var rand = random(Math.floor(Math.random() * 2));
         if (this.mutated) {
             if (rand == 5) {
                 this.energy *= 2
