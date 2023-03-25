@@ -1,0 +1,42 @@
+canvas{
+    margin-left: 570px;
+    margin-top: 220 px;
+}
+body{
+    background-color: rgb(77, 44, 44)        }
+h1{
+    text-align: center;
+    text-shadow: sienna 4px 2px;
+}
+div{
+    margin: auto;
+    color:black;
+
+}
+.green{
+    color: green;
+}
+
+.yellow{
+    color: yellow;
+}
+
+.red{
+    color: red;
+}
+
+.lime{
+    color: lime;
+}
+
+.orange{
+    color: orange;
+}
+
+.purpure{
+    color: purple;
+}
+
+.blue{
+    color: blue;
+}

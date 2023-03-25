@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/mher2009/prog3tumo/issues"
   },
-  "homepage": "https://github.com/mher2009/prog3tumo#readme"
+  "homepage": "https://github.com/mher2009/prog3tumo#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
