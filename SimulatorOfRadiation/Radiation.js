@@ -22,7 +22,7 @@ module.exports = class Radiation extends LivingCreature{
     infect() {
         this.multiply++
         var emptyCells = this.chooseCell(1, 2);
-        var newCell = random(emptyCells);
+        var newCell = Math.floor(Math.random() * emptyCells.length);
         if (newCell && this.multiply >= 5) {
             var newX = newCell[0];
             var newY = newCell[1];
@@ -49,7 +49,7 @@ module.exports = class Radiation extends LivingCreature{
     hit() {
         this.multiply++;
         var emptyCells = this.chooseCell(4, 4)
-        var newCell = random(emptyCells)
+        var newCell = Math.floor(Math.random() * emptyCells.length)
         if (this.energy > 0) {
             if (newCell && this.multiply >= 7) {
                 if(player.energy>0){

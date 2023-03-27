@@ -100,7 +100,7 @@ var player= {
     },
     eat (){
         var emptyCells = this.chooseCell(2, 2)
-        var newCell = random(emptyCells)
+        var newCell = Math.floor(Math.random() * emptyCells.length)
         if(newCell){
             var newX = newCell[0]
             var newY = newCell[1]
@@ -121,7 +121,7 @@ var player= {
     hit () {
         this.multiply++;
         var emptyCells = this.chooseCell(3, 3)
-        var newCell = random(emptyCells)
+        var newCell = Math.floor(Math.random() * emptyCells.length)
      
         if(newCell && this.multiply >=2){
             var newX = newCell[0]
@@ -141,7 +141,7 @@ var player= {
     },
     get (){
         var emptyCells = this.chooseCell(5, 5);
-        var newCell = random(emptyCells);
+        var newCell = Math.floor(Math.random() * emptyCells.length)
         if(newCell){
             var newX = newCell[0]
             var newY = newCell[1]
@@ -152,7 +152,7 @@ var player= {
     },
     heal (){
         var emptyCells = this.chooseCell(1, 2)
-        var newCell = random(emptyCells);
+        var newCell = Math.floor(Math.random() * emptyCells.length)
         if(newCell){
             var newX = newCell[0]
             var newY = newCell[1]

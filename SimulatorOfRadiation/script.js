@@ -85,7 +85,6 @@ var side = 25;
 function setup() {
     frameRate(15)
     createCanvas(matrix[0].length * side, matrix.length * side);
-
     // for (var y = 0; y < matrix.length; y++) {
     //     for (var x = 0; x < matrix[y].length; x++) {
     //         if (matrix[y][x] == 1) {    
