@@ -1,8 +1,11 @@
-var player= {
-    healing: 3,
-    energy: 7,
-    multiply: 0,
-    directions: [
+module.exports = class Player{
+    constructor(){
+    this.x;
+    this.y;
+    this.healing = 3
+    this.energy = 7
+    this.multiply = 0
+    this.directions = [
         [this.x - 1, this.y - 1],
         [this.x, this.y - 1],
         [this.x + 1, this.y - 1],
@@ -11,7 +14,8 @@ var player= {
         [this.x - 1, this.y + 1],
         [this.x, this.y + 1],
         [this.x + 1, this.y + 1]
-    ],
+    ]
+    }
     chooseMyDirec (){
         this.directions = [
             [this.x - 1, this.y - 1],
@@ -23,7 +27,7 @@ var player= {
             [this.x, this.y + 1],
             [this.x + 1, this.y + 1]
         ];
-    },
+    }
     chooseMe () {
         for (var i = 0; i < matrix.length; i++) {
             for (var j = 0; j < matrix[0].length; j++) {
@@ -33,7 +37,7 @@ var player= {
                 }
             }
         }
-    },
+    }
     chooseCell(char, char1) {
         this.chooseMyDirec()
         var found = [];
@@ -48,7 +52,7 @@ var player= {
             }
         }
         return found;
-    },
+    }
 
     up () {
         this.chooseMe()
@@ -61,7 +65,7 @@ var player= {
                 matrix[this.y][this.x] = 4;
             }
         }
-    },
+    }
     down () {
         this.chooseMe()
         if (this.y + 1 >= 0 && this.y + 1 < matrix.length) {
@@ -73,7 +77,7 @@ var player= {
                 matrix[this.y][this.x] = 4;
             }
         }
-    },
+    }
     left () {
         this.chooseMe()
         if (this.x - 1 >= 0 && this.x - 1 < matrix[0].length) {
@@ -85,7 +89,7 @@ var player= {
                 matrix[this.y][this.x] = 4;
             }
         }
-    },
+    }
     rigth () {
         this.chooseMe()
         if (this.x + 1 >= 0 && this.x + 1 < matrix[0].length) {
@@ -97,7 +101,7 @@ var player= {
                 matrix[this.y][this.x] = 4;
             }
         }
-    },
+    }
     eat (){
         var emptyCells = this.chooseCell(2, 2)
         var newCell = Math.floor(Math.random() * emptyCells.length)
@@ -114,10 +118,8 @@ var player= {
             }   
             }
         }
-
-
-        
-    },
+  
+    }
     hit () {
         this.multiply++;
         var emptyCells = this.chooseCell(3, 3)
@@ -138,7 +140,7 @@ var player= {
             }
 
         }       
-    },
+    }
     get (){
         var emptyCells = this.chooseCell(5, 5);
         var newCell = Math.floor(Math.random() * emptyCells.length)
@@ -149,7 +151,7 @@ var player= {
             console.log("Heal count: " + this.healing)
             this.healing++
         }
-    },
+    }
     heal (){
         var emptyCells = this.chooseCell(1, 2)
         var newCell = Math.floor(Math.random() * emptyCells.length)
@@ -169,7 +171,7 @@ var player= {
                 }
             }
         }
-    },
+    }
     die () {
         matrix[this.y][this.x] = 0;
         this.x = undefined;
@@ -178,32 +180,31 @@ var player= {
     }
 
 };
-
-document.addEventListener('keydown', function (event) {
-    if (event.code == "KeyW") {
-        player.up()
-    }
-    if (event.code == "KeyS") {
-        player.down()
-    }
-    if (event.code == "KeyA") {
-        player.left()
-    }
-    if (event.code == "KeyD") {
-        player.rigth()
-    }
-    if(event.code == "KeyQ"){
-        player.hit()
-    }   
-    if(event.code == "KeyE"){
-        player.eat()
-    }
-    if(event.code == "KeyG"){
-        player.get()
-    }
-    if(event.code == "KeyH"){
-        player.heal()
-    }
-})  
+// document.addEventListener('keydown', function (event) {
+//     if (event.code == "KeyW") {
+//         player.up()
+//     }
+//     if (event.code == "KeyS") {
+//         player.down()
+//     }
+//     if (event.code == "KeyA") {
+//         player.left()
+//     }
+//     if (event.code == "KeyD") {
+//         player.rigth()
+//     }
+//     if(event.code == "KeyQ"){
+//         player.hit()
+//     }   
+//     if(event.code == "KeyE"){
+//         player.eat()
+//     }
+//     if(event.code == "KeyG"){
+//         player.get()
+//     }
+//     if(event.code == "KeyH"){
+//         player.heal()
+//     }
+// })  
 
 

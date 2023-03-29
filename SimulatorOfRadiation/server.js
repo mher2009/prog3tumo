@@ -7,13 +7,12 @@ var fs = require("fs")
 app.use(express.static("."));
 
 app.get('/', function (req, res) {
-   res.redirect('index.html');
+    res.redirect('index.html');
 });
 const port = 3000
 server.listen(port, () => {
     console.log("Server connected")
 });
-
 
 function matrixGenerator(matrixSize, grassCount, grEatCount, radCount, healingCount) {
     let matrix = [];
@@ -33,7 +32,7 @@ function matrixGenerator(matrixSize, grassCount, grEatCount, radCount, healingCo
 
         if (matrix[y][x] == 0) {
             matrix[y][x] = 1;
-        }else{
+        } else {
             i--;
         }
 
@@ -46,7 +45,7 @@ function matrixGenerator(matrixSize, grassCount, grEatCount, radCount, healingCo
 
         if (matrix[y][x] == 0) {
             matrix[y][x] = 2;
-        }else{
+        } else {
             i--;
         }
 
@@ -59,7 +58,7 @@ function matrixGenerator(matrixSize, grassCount, grEatCount, radCount, healingCo
 
         if (matrix[y][x] == 0) {
             matrix[y][x] = 3;
-        }else{
+        } else {
             i--;
         }
 
@@ -67,13 +66,13 @@ function matrixGenerator(matrixSize, grassCount, grEatCount, radCount, healingCo
 
 
 
-    for(let i = 0; i < healingCount; i++){
+    for (let i = 0; i < healingCount; i++) {
         let x = Math.floor(Math.random() * matrixSize)
         let y = Math.floor(Math.random() * matrixSize)
 
-        if(matrix[y][x] == 0){
+        if (matrix[y][x] == 0) {
             matrix[y][x] = 5;
-        }else{
+        } else {
             i--;
         }
     }
@@ -83,26 +82,26 @@ function matrixGenerator(matrixSize, grassCount, grEatCount, radCount, healingCo
 
     matrix[y][x] = 4;
 
-
+    io.emit("send matrix", matrix)
     return matrix;
-
 
 }
 
-let matrix = matrixGenerator(40,30,12,80,20);
+matrix = matrixGenerator(40, 30, 12, 80, 20);
 
-var grassArr = []
-var grassEaterArr = []
-var radiationArr = []
+grassArr = []
+grassEaterArr = []
+radiationArr = []
 
 const Grass = require("./Grass")
-const GrassEater = require("./Grass")
+const GrassEater = require("./GrassEater")
 const Radiation = require("./Radiation")
-
-function createObject(){
+const Player = require("./Player")
+var player  = new Player()
+function createObject() {
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
-            if (matrix[y][x] == 1) {    
+            if (matrix[y][x] == 1) {
                 var gr = new Grass(x, y, false)
 
                 grassArr.push(gr)
@@ -117,17 +116,20 @@ function createObject(){
             }
         }
     }
+    io.emit("send matrix ", matrix)
+    io.emit("send grassArr", grassArr)
+    io.emit("send grassArr", grassEaterArr)
 }
 
 createObject()
 
-function gameMove(){
+function gameMove() {
+
     for (let i in grassArr) {
         grassArr[i].mul()
     }
 
     for (let j in grassEaterArr) {
-        grassEaterArr[j].mul()
         grassEaterArr[j].eat()
     }
 
@@ -135,6 +137,9 @@ function gameMove(){
         radiationArr[j].infect()
         radiationArr[j].hit()
     }
+    io.emit("send matrix", matrix)
+    io.emit("send grassArr", grassArr)
+    io.emit("send grassArr", grassEaterArr)
 }
 
-setInterval(gameMove, 1000)
+setInterval(gameMove, 200)

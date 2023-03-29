@@ -1,3 +1,6 @@
+const socket = io()
+
+
 // function matrixGenerator(matrixSize, grassCount, grEatCount, radCount, healingCount) {
 //     let matrix = [];
 
@@ -83,8 +86,7 @@ var side = 25;
 
 
 function setup() {
-    frameRate(15)
-    createCanvas(matrix[0].length * side, matrix.length * side);
+    createCanvas(40 * side, 40 * side);
     // for (var y = 0; y < matrix.length; y++) {
     //     for (var x = 0; x < matrix[y].length; x++) {
     //         if (matrix[y][x] == 1) {    
@@ -103,7 +105,7 @@ function setup() {
     //     }
     // }
 }
-function draw() {
+function changeColor(matrix, grassArr, grassEaterArr) {
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
             if (matrix[y][x] == 1) {
@@ -158,6 +160,8 @@ function draw() {
 
 
 }
+
+socket.on("send matrix", changeColor)
 
 
 
