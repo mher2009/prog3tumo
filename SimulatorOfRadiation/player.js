@@ -1,5 +1,5 @@
 module.exports = class Player{
-    constructor(){
+    constructor(x,y){
     this.x;
     this.y;
     this.healing = 3
@@ -178,33 +178,5 @@ module.exports = class Player{
         this.y = undefined;
         alert("You losed! reload for try")
     }
-
+ 
 };
-// document.addEventListener('keydown', function (event) {
-//     if (event.code == "KeyW") {
-//         player.up()
-//     }
-//     if (event.code == "KeyS") {
-//         player.down()
-//     }
-//     if (event.code == "KeyA") {
-//         player.left()
-//     }
-//     if (event.code == "KeyD") {
-//         player.rigth()
-//     }
-//     if(event.code == "KeyQ"){
-//         player.hit()
-//     }   
-//     if(event.code == "KeyE"){
-//         player.eat()
-//     }
-//     if(event.code == "KeyG"){
-//         player.get()
-//     }
-//     if(event.code == "KeyH"){
-//         player.heal()
-//     }
-// })  
-
-

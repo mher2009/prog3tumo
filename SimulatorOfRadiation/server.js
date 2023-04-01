@@ -97,13 +97,12 @@ const Grass = require("./Grass")
 const GrassEater = require("./GrassEater")
 const Radiation = require("./Radiation")
 const Player = require("./Player")
-var player  = new Player()
+ player  = new Player()
 function createObject() {
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
             if (matrix[y][x] == 1) {
                 var gr = new Grass(x, y, false)
-
                 grassArr.push(gr)
             } else if (matrix[y][x] == 2) {
                 var grEat = new GrassEater(x, y, false)
@@ -119,6 +118,7 @@ function createObject() {
     io.emit("send matrix ", matrix)
     io.emit("send grassArr", grassArr)
     io.emit("send grassArr", grassEaterArr)
+    io.emit("send player", player)
 }
 
 createObject()

@@ -6,14 +6,14 @@ module.exports = class Radiation extends LivingCreature{
         this.energy = 8
     }
     chooseCell(char, char1) {
-        var found = [];
+        var found = [true];
         for (var i in this.directions) {
             var x = this.directions[i][0];
             var y = this.directions[i][1];
             if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-
                 if (matrix[y][x] == char || matrix[y][x] == char1) {
                     found.push(this.directions[i]);
+                    found[0] = false;
                 }
             }
         }
@@ -22,8 +22,8 @@ module.exports = class Radiation extends LivingCreature{
     infect() {
         this.multiply++
         var emptyCells = this.chooseCell(1, 2);
-        var newCell = Math.floor(Math.random() * emptyCells.length);
-        if (newCell && this.multiply >= 5) {
+        var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+        if (this.multiply >= 5 && emptyCells[0]) {
             var newX = newCell[0];
             var newY = newCell[1];
             for (var i in grassArr) {
@@ -49,9 +49,9 @@ module.exports = class Radiation extends LivingCreature{
     hit() {
         this.multiply++;
         var emptyCells = this.chooseCell(4, 4)
-        var newCell = Math.floor(Math.random() * emptyCells.length)
+        var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
         if (this.energy > 0) {
-            if (newCell && this.multiply >= 7) {
+            if (emptyCells[0] && this.multiply >= 7) {
                 if(player.energy>0){
                 player.energy--;
                 console.log("Your Hp:" + player.energy);

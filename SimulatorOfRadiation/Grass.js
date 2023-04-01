@@ -26,14 +26,9 @@ module.exports = class Grass extends LivingCreature {
 
 
     mul() {
-        var gen = false
-        var rand = Math.floor(Math.random() * 4)
-        if (rand == 4) {
-            gen = this.mutated
-        }
 
         var tact = 20;
-        if (this.mutated == true) {
+        if (this.mutated) {
             tact = 1
         }
         this.multiply++
@@ -46,7 +41,7 @@ module.exports = class Grass extends LivingCreature {
 
             matrix[newY][newX] = 1;
 
-            var gr = new Grass(newX, newY, gen);
+            var gr = new Grass(newX, newY, this.mutated);
 
             grassArr.push(gr);
 

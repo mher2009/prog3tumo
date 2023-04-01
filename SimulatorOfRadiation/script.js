@@ -1,109 +1,10 @@
 const socket = io()
-
-
-// function matrixGenerator(matrixSize, grassCount, grEatCount, radCount, healingCount) {
-//     let matrix = [];
-
-//     for (let i = 0; i < matrixSize; i++) {
-//         matrix[i] = []
-
-//         for (let j = 0; j < matrixSize; j++) {
-//             matrix[i][j] = 0;
-//         }
-//     }
-
-//     for (let i = 0; i < grassCount; i++) {
-
-//         let x = Math.floor(Math.random() * matrixSize)
-//         let y = Math.floor(Math.random() * matrixSize)
-
-//         if (matrix[y][x] == 0) {
-//             matrix[y][x] = 1;
-//         }else{
-//             i--;
-//         }
-
-//     }
-
-//     for (let i = 0; i < grEatCount; i++) {
-
-//         let x = Math.floor(Math.random() * matrixSize)
-//         let y = Math.floor(Math.random() * matrixSize)
-
-//         if (matrix[y][x] == 0) {
-//             matrix[y][x] = 2;
-//         }else{
-//             i--;
-//         }
-
-//     }
-
-//     for (let i = 0; i < radCount; i++) {
-
-//         let x = Math.floor(Math.random() * matrixSize)
-//         let y = Math.floor(Math.random() * matrixSize)
-
-//         if (matrix[y][x] == 0) {
-//             matrix[y][x] = 3;
-//         }else{
-//             i--;
-//         }
-
-//     }
-
-
-
-//     for(let i = 0; i < healingCount; i++){
-//         let x = Math.floor(Math.random() * matrixSize)
-//         let y = Math.floor(Math.random() * matrixSize)
-
-//         if(matrix[y][x] == 0){
-//             matrix[y][x] = 5;
-//         }else{
-//             i--;
-//         }
-//     }
-
-//     let x = Math.floor(Math.random() * matrixSize)
-//     let y = Math.floor(Math.random() * matrixSize)
-
-//     matrix[y][x] = 4;
-
-
-//     return matrix;
-
-
-// }
-
-
-// let matrix = matrixGenerator(40,30,12,80,20);
 var side = 25;
-
-
-// var grassArr = []
-// var grassEaterArr = []
-// var radiationArr = []
 
 
 function setup() {
     createCanvas(40 * side, 40 * side);
-    // for (var y = 0; y < matrix.length; y++) {
-    //     for (var x = 0; x < matrix[y].length; x++) {
-    //         if (matrix[y][x] == 1) {    
-    //             var gr = new Grass(x, y, false)
 
-    //             grassArr.push(gr)
-    //         } else if (matrix[y][x] == 2) {
-    //             var grEat = new GrassEater(x, y, false)
-
-    //             grassEaterArr.push(grEat)
-    //         } else if (matrix[y][x] == 3) {
-    //             var rad = new Radiation(x, y)
-
-    //             radiationArr.push(rad)
-    //         }
-    //     }
-    // }
 }
 function changeColor(matrix, grassArr, grassEaterArr) {
     for (var y = 0; y < matrix.length; y++) {
@@ -143,20 +44,6 @@ function changeColor(matrix, grassArr, grassEaterArr) {
         }
     }
 
-    // for (let i in grassArr) {
-    //     grassArr[i].mul()
-    // }
-
-    // for (let j in grassEaterArr) {
-    //     grassEaterArr[j].mul()
-    //     grassEaterArr[j].eat()
-    // }
-
-    // for (let j in radiationArr) {
-    //     radiationArr[j].infect()
-    //     radiationArr[j].hit()
-    // }
-
 
 
 }
@@ -164,8 +51,35 @@ function changeColor(matrix, grassArr, grassEaterArr) {
 socket.on("send matrix", changeColor)
 
 
+function keyboard(a, b, c, player){
+document.addEventListener('keydown', function (event) {
+    if (event.code == "KeyW") {
+        player.up()
+    }
+    if (event.code == "KeyS") {
+        player.down()
+    }
+    if (event.code == "KeyA") {
+        player.left()
+    }
+    if (event.code == "KeyD") {
+        player.rigth()
+    }
+    if(event.code == "KeyQ"){
+        player.hit()
+    }   
+    if(event.code == "KeyE"){
+        player.eat()
+    }
+    if(event.code == "KeyG"){
+        player.get()
+    }
+    if(event.code == "KeyH"){
+        player.heal()
+    }
+})  
 
+}
 
-
-
+socket.on("send player", keyboard)
 
